@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Compilar el simulador
-echo "Compilando sim.cpp..."
-g++ sim.cpp -o sim -std=c++11
+echo "Compilando sim.c..."
+gcc sim.c -o sim -lm
 
 # Archivo de salida CSV
 OUTPUT="resultados.csv"
@@ -18,9 +18,9 @@ run_sim() {
     result=$(./sim $nmarcos $page_size $trace)
 
     # Extraer métricas directamente de las líneas Totales
-    referencias=$(echo "$result" | grep "Referencias" | awk '{print $2}')
-    fallos=$(echo "$result" | grep "Fallos" | awk '{print $4}')
-    tasa=$(echo "$result" | grep "Tasa" | awk '{print $4}')
+    referencias=$(echo "$result" | grep "Referencias:" | awk '{print $2}')
+    fallos=$(echo "$result" | grep "Fallos de pagina:" | awk '{print $4}')
+    tasa=$(echo "$result" | grep "Tasa de fallos:" | awk '{print $4}')
 
     # Guardar en CSV
     echo "$trace,$page_size,$nmarcos,$referencias,$fallos,$tasa" >> $OUTPUT
