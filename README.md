@@ -54,11 +54,11 @@ gcc -pthread main.c barrera.c -o barrera
 
 
 
-- N_hebras → número de hebras (por defecto 5).
+- N_hebras → Número de hebras (por defecto 5).
 
 
 
-- E_etapas → número de puntos de sincronización (por defecto 4).
+- E_etapas → Número de puntos de sincronización (por defecto 4).
 
 
 
@@ -99,13 +99,13 @@ gcc sim.c -o sim -lm
 ./sim Nmarcos tamanioMarco [--verbose] traza.txt
 ```
 
-- **Nmarcos** → número de marcos físicos disponibles
+- **Nmarcos** → Número de marcos físicos disponibles
 
-- **tamanioMarco** → tamaño del marco en bytes (ej: 8, 4096, etc.)
+- **tamanioMarco** → Tamaño del marco en bytes (ej: 8, 4096, etc.)
 
-- **--verbose** (opcional) → activa modo detallado, mostrando traducción de cada referencia
+- **--verbose** (opcional) → Activa modo detallado, mostrando traducción de cada referencia
 
-- **traza.txt** → archivo con direcciones virtuales (en decimal o hexadecimal)
+- **traza.txt** → Archivo con direcciones virtuales (en decimal o hexadecimal)
 
 ### 📌 Ejemplo:
 ```
@@ -116,32 +116,37 @@ gcc sim.c -o sim -lm
 
 Si no se usa --verbose:
 
-- número total de referencias
+- Número total de referencias
 
-- número de fallos de página
+- Número de fallos de página
 
-- tasa de fallos
+- Tasa de fallos
 
 Si se usa --verbose: para cada referencia, imprime:
 
-- dirección virtual (DV)
+- Dirección virtual (DV)
 
-- número de página virtual (nvp)
+- Número de página virtual (nvp)
 
-- offset
+- Offset
 
-- si fue HIT o FALLO
+- Si fue HIT o FALLO
 
-- marco físico usado
+- Marco físico usado
 
-- dirección física resultante (DF)
+- Dirección física resultante (DF)
 
 ### 🧪 Experimentos incluidos
 
 Se incluye un script (experiments.sh) que ejecuta simulaciones usando los archivos trace1.txt y trace2.txt, variando los parámetros de:
 
-- número de marcos físicos (8, 16, 32)
+- Número de marcos físicos (8, 16, 32)
 
- -tamaño de marco (por ejemplo, 8 bytes para trace1.txt, 4096 bytes para trace2.txt)
+- Tamaño de marco (por ejemplo, 8 bytes para trace1.txt, 4096 bytes para trace2.txt)
 
 Esto permite observar cómo cambia la tasa de fallos de página con distintas configuraciones de memoria física y tamaño de marco.
+
+> **Para ejecutar experiments.sh**:
+> ```
+> bash experiments.sh
+> ```
